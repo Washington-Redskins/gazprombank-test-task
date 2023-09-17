@@ -88,14 +88,14 @@ package LogController {
                 }
                 # если НЕ ($int_id && $created)
                 else {
-                    #Некритичная ошибка. Транзакция будет завершена успешно.
                     Custom_exception::print_warn("Incomplete or invalid log entry: $_");
+                    die;
                 }
             }
             # неправильная дата и время
             else {
-                #Некритичная ошибка. Транзакция будет завершена успешно. Но строка в текущей итерации не будет внесена, благодаря типизации (timestamp) самой БД
                 Custom_exception::print_warn("Invalid log entry format: $_");
+                die;
             }
         }
 
